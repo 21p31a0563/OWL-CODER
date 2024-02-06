@@ -6,12 +6,12 @@ public:
             string word=x;
             sort(word.begin(),word.end());
             mp[word].push_back(x);
-
         }
         vector<vector<string>>ans;
-        for(auto x:mp){
-            ans.push_back(x.second);
+        for(auto it: mp){
+            ans.push_back(it.second);
         }
-        return ans;
+    return ans;
+
     }
 };
