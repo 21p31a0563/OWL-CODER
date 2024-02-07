@@ -12,9 +12,9 @@ public:
       sort(v.rbegin(),v.rend());
       string ans;
       for(auto it:v){
-          for(int j=0;j<it.first;j++){
-              ans+=it.second;
-          }
+          
+              ans+=string(it.first,it.second);
+          
       }
       return ans;
     }
