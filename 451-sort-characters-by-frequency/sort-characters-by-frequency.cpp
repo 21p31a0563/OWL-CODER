@@ -1,21 +1,21 @@
 class Solution {
 public:
-static bool cmp(const pair<char,int>&a,const pair<char,int>&b)
-{
-    return a.second>b.second;
-}
     string frequencySort(string s) {
-        map<char,int>m;
-        for(auto it:s){
-            m[it]++;
-        }
-        vector<pair<char,int>>v(m.begin(),m.end());
-        sort(v.begin(),v.end(),cmp);
-        string ans="";
-        for(auto it:v)
-        {
-            ans+=string(it.second,it.first);
-        }
-        return ans;
+        vector<pair<int,char>>v;
+        map<char,int>mp;
+      for(auto i:s){
+          mp[i]++;
+      }
+      for(auto it:mp){
+          v.push_back({it.second,it.first});
+      }
+      sort(v.rbegin(),v.rend());
+      string ans;
+      for(auto it:v){
+          for(int j=0;j<it.first;j++){
+              ans+=it.second;
+          }
+      }
+      return ans;
     }
 };
