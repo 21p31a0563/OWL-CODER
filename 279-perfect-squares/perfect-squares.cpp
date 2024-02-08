@@ -1,23 +1,23 @@
+
+
 class Solution {
 public:
-const int inf=1e9;
     int numSquares(int n) {
+        const int inf = 1e9;
+      vector<vector<int>> dp(101, vector<int>(n + 1, inf));
 
-        vector<vector<int>>dp(102,vector<int>(n+1,inf));
-        for(int i=0;i<102;i++){
-            dp[i][0]=0;
-        }
-        for(int i=100;i>-1;i--){
-            for(int j=0;j<n+1;j++){
-                int take=inf,nottake=inf;
-                nottake=dp[i+1][j];
-                if(i*i<=j){
-                    take=1+dp[i][j-i*i];
+        for (int i = 0; i <= 100; ++i)
+            dp[i][0] = 0;
 
-                }
-                dp[i][j]=min(take,nottake);
+        for (int i = 1; i <= 100; ++i) {
+            for (int j = 1; j <= n; ++j) {
+                if (i * i <= j)
+                    dp[i][j] = min(dp[i - 1][j], 1 + dp[i][j - i * i]);
+                else
+                    dp[i][j] = dp[i - 1][j];
             }
         }
-        return dp[0][n];
+
+        return dp[100][n];
     }
 };
