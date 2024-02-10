@@ -1,20 +1,27 @@
 class Solution {
 public:
     int countSubstrings(string s) {
-        int count=0;
-        for(int i=0;i<s.length();i++){
-            string s2="";
-            for(int j=i;j<s.length();j++){
-                s2+=s[j];
-                string reversed=s2;
-                reverse(reversed.begin(),reversed.end());
-                if(s2==reversed)
-                {
-                    count++;
-                }
-
+        int n=s.size();
+        int ans=0;
+        
+        for(int i=0;i<n;i++)
+        {
+            //odd length palindromes
+           int cnt=0;
+            int l=i,r=i;
+            while(l>=0&&r<n&&s[l]==s[r]){
+                cnt++;
+                l--,r++;
             }
+            ans+=cnt;
+            //even length palindromes
+            l=i,r=i+1,cnt=0;
+            while(l>=0&&r<n&&s[l]==s[r]){
+                cnt++;
+                l--,r++;
+            }
+            ans+=cnt;
         }
-        return count;
+        return ans;
     }
 };
