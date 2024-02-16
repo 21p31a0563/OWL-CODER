@@ -1,28 +1,38 @@
 class Solution {
 public:
-static bool cmp (pair<int,int>a,pair<int,int>b)
-    {
-        return a.second<b.second;
-    }
     int findLeastNumOfUniqueInts(vector<int>& arr, int k) {
-    
-    map<int,int>mp;
-    for(auto it:arr){
-        mp[it]++;
-    }
-    vector<pair<int,int>>v(mp.begin(),mp.end());
-    sort(v.begin(),v.end(),cmp);
-    int cnt=0;
-    for(auto it:v){
-        if(it.second<=k){
-            k=k-it.second;
-            cnt++;
+        unordered_map<int, int> mp;
+        for (auto it : arr) {
+            mp[it]++;
         }
-        else{
-            break;
-        }
-    }
-    return v.size()-cnt;
 
+        int n = mp.size();
+        vector<pair<int, int>> temp(n);
+        int j = 0;
+
+        for (auto it : mp) {
+            temp[j].first = it.second;
+            temp[j].second = it.first;
+            j++;
+        }
+
+        sort(temp.begin(), temp.end());
+
+        j = 0;
+        int ans = temp.size();
+
+        while (k > 0 && j < temp.size()) {
+            while (temp[j].first > 0 && k > 0) {
+                temp[j].first--;
+                k--;
+            }
+
+            if (temp[j].first == 0) {
+                j++;
+                ans--;
+            }
+        }
+
+        return ans;
     }
 };
