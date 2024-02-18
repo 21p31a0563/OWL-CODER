@@ -4,7 +4,9 @@
 using namespace std;
 
 // } Driver Code Ends
-class Solution{
+
+        // code here
+        class Solution{
 public:
     vector<int> findTwoElement(vector<int> arr, int n) {
         // code here
@@ -12,21 +14,28 @@ public:
         int rep=-1;
         int mis=-1;
         unordered_map<int,int>mp;
-        for(int i=0;i<n;i++){
-            mp[arr[i]]++;
+        for (auto it:arr){
+            mp[it]++;
         }
-        for (int i = 1; i <= n; ++i) {
-            if (mp.find(i) == mp.end()) {
-                mis = i;
-            } else if (mp[i] > 1) {
-                rep = i;
+        for(auto it:mp){
+            if(it.second>1){
+                rep=it.first;
             }
+        }
+        int i=1;
+        while(i<=n){
+            if(mp.find(i)==mp.end()){
+                mis=i;
+                break;
+            }
+            i++;
         }
         ans.push_back(rep);
         ans.push_back(mis);
         return ans;
     }
 };
+
 
 //{ Driver Code Starts.
 
