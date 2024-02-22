@@ -4,8 +4,8 @@ public:
         vector<int>trusts(n+1);
         vector<int>trusted(n+1);
         for(auto it:trust){
-            ++trusts[it[0]];
-            ++trusted[it[1]];
+            trusts[it[0]]++;
+            trusted[it[1]]++;
         }
         for(int i=1;i<=n;++i)
         {
