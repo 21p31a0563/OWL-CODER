@@ -107,10 +107,11 @@ class Solution{
         else{
          int left_height = height(root->left);
         int right_height = height(root->right);
-        if (left_height >= right_height)
-            return left_height + 1;
-        else
-            return right_height + 1;
+        // if (left_height >= right_height)
+        //     return left_height + 1;
+        // else
+        //     return right_height + 1;
+        return 1+max(left_height,right_height);
     }
 }
 };
