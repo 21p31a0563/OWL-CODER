@@ -6,15 +6,15 @@ public:
         if (nums.size() < 3) {
             return false;
         }
-        for(int i=0;i<nums.size();++i)
+        for(auto i:nums)
         {
-            if(nums[i]<=firstsmall)
+            if(i<=firstsmall)
             {
-                firstsmall=nums[i];
+                firstsmall=i;
             }
-            else if(nums[i]<=secondsmall)
+            else if(i<=secondsmall)
             {
-                secondsmall=nums[i];
+                secondsmall=i;
             }
             else {
                 return true;
