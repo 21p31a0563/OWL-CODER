@@ -20,7 +20,7 @@ public:
       
         for (auto it : nums) {
             if (mp[it] == maxfreq) {
-                cnt++;
+                cnt+=1;
             }
         }
 
