@@ -7,6 +7,7 @@ public:
        {
            if(nums1[i]==nums2[j]){
                return nums1[i];
+               break;
            }
            if(nums1[i]<nums2[j]){
                i++;
