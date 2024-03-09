@@ -10,10 +10,10 @@ public:
                break;
            }
            if(nums1[i]<nums2[j]){
-               i++;
+               i+=1;
            }
            if(nums1[i]>nums2[j]){
-               j++;
+               j+=1;
            }
 
        }
