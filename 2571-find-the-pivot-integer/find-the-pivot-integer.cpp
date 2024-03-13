@@ -4,7 +4,7 @@ public:
         int sum1=(n*(n+1)/2);
         int i=n;
         int sum2=n;
-        while(i!=-1){
+        while(sum1>=sum2){
             if(sum1==sum2) return i;
             else{
                 sum1-=i;
