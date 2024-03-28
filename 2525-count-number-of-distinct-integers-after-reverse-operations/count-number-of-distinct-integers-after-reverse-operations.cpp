@@ -1,20 +1,29 @@
+
 class Solution {
+    int rev(int n) {
+        int rev = 0;
+        int temp = n;
+        while (temp > 0) {
+            int rem = temp % 10;
+            rev = rev * 10 + rem;
+            temp /= 10;
+        }
+        return rev;
+    }
 public:
     int countDistinctIntegers(vector<int>& nums) {
-        unordered_set<int>s;
-        for(auto it:nums){
-            s.insert(it);
+        vector<int> v;
+        for (auto it : nums) {
+            v.push_back(it);
+            int a = rev(it);
+            v.push_back(a);
         }
-        for(auto it:nums){
-            int rev=0;
-            while(it>0){
-                int rem=it%10;
-                rev=rev*10+rem;
-                it/=10;
-
-            }
-            s.insert(rev);
+        
+        map<int, int> mp;
+        for (auto it : v) {
+            mp[it]++;
         }
-        return s.size();
+        
+        return mp.size(); // Return the size of the map, which represents the count of distinct integers
     }
 };
